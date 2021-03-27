@@ -22,15 +22,15 @@ locals {
 locals {
   instance_count             = var.instance_count
   ami                        = "ami-0afcbc82a6a511e53"
-  key_name                   = "windows"
+  key_name                   = "windows-key"
   type                       = var.type
   use_num_suffix             = var.use_num_suffix
   product                    = var.product
   num_suffix_format          = var.num_suffix_format
   stack                      = var.stack
-  security_groups            = ["sg-0459543c"]
-  subnets                    = "subnet-2c8c3c54"
+  security_groups            = ["sg-64f87247"]
+  subnets                    = "subnet-2708aa5f"
   idle_timeout               = 60
   enable_deletion_protection = false
-  vpc_id                     = "vpc-5efdda26"
+  vpc_id                     = "vpc-4700503f"
 }
