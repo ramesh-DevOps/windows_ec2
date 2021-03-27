@@ -28,9 +28,9 @@ locals {
   product                    = var.product
   num_suffix_format          = var.num_suffix_format
   stack                      = var.stack
-  security_groups            = ["sg-0f4a87e03060a4cc8"]
-  subnets                    = "subnet-2708aa5f"
+  security_groups            = ["sg-0459543c"]
+  subnets                    = "subnet-2c8c3c54"
   idle_timeout               = 60
   enable_deletion_protection = false
-  vpc_id                     = "vpc-4700503f"
+  vpc_id                     = "vpc-5efdda26"
 }
