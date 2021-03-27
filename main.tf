@@ -22,7 +22,7 @@ locals {
 locals {
   instance_count             = var.instance_count
   ami                        = "ami-0afcbc82a6a511e53"
-  key_name                   = "windows-key"
+  key_name                   = "windows"
   type                       = var.type
   use_num_suffix             = var.use_num_suffix
   product                    = var.product
