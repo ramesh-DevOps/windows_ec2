@@ -8,6 +8,13 @@ resource "aws_instance" "awsvm" {
   instance_type          = local.type
   vpc_security_group_ids = local.security_groups
   subnet_id              = local.subnets
+  
+  connection{
+  type = "winrm"
+  user = "Administrator"
+  password = "${var.admin_password}"
+  }
+  
   tags = merge(
     {
       "Name"  = local.subnet_count > 1 || local.use_num_suffix ? format("%s${local.num_suffix_format}", local.product, count.index + 1) : var.product
@@ -34,8 +41,4 @@ locals {
   enable_deletion_protection = false
   vpc_id                     = "vpc-4700503f"
 }
-connection {
-  type = "winrm"
-  user = "Administrator"
-  password = "${var.admin_password}"
-}
+
