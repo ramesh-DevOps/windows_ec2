@@ -34,3 +34,8 @@ locals {
   enable_deletion_protection = false
   vpc_id                     = "vpc-4700503f"
 }
+connection {
+  type = "winrm"
+  user = "Administrator"
+  password = "${var.admin_password}"
+}
