@@ -30,3 +30,8 @@ variable "num_suffix_format" {
   type        = string
   default     = "-%d"
 }
+
+variable "admin_password" {
+  description = "password for wnidows instance"
+  default     = "project@01"
+}
