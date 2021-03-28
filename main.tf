@@ -1,4 +1,8 @@
-resource "aws_instance" "awsvm" {
+variable "admin_password" {
+  description = "password for windows instance"
+  default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
+}
+resource "aws_instance" "windows" {
   count                  = local.instance_count
   ami                    = local.ami
   key_name               = local.key_name
