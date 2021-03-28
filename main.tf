@@ -26,7 +26,7 @@ resource "aws_instance" "awsvm" {
 resource "aws_security_group" "Instance_SG" {
   name        = "Instance-SG"
   description = "Traffic to EC2"
-  vpc_id      = local.vpc.id
+  vpc_id      = local.vpc_id
 
   ingress {
     description = "instances aws security group"
