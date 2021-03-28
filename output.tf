@@ -17,3 +17,7 @@ output "private_ip" {
   description = "List of private IP addresses assigned to the instances"
   value       = aws_instance.windows.*.private_ip
 }
+output "vpc_security_group_ids" {
+  description = "List of associated security groups of instances, if running in non-default VPC"
+  value       = aws_instance.windows.*.vpc_security_group_ids
+}
