@@ -32,21 +32,21 @@ resource "aws_security_group" "Instance_SG" {
     description = "instances aws security group"
     from_port   = 5986
     to_port     = 5986
-    protocol    = "WinRM-HTTPS"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     description = "instances aws security group"
     from_port   = 5985
     to_port     = 5985
-    protocol    = "WinRM-HTTP"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     description = "instances aws security group"
     from_port   = 3389
     to_port     = 3389
-    protocol    = "RDP"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
   egress {
