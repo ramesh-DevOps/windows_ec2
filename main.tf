@@ -3,8 +3,7 @@ variable "admin_password" {
   default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
 }
 variable "type" {
-  description = "type of instance"
-  default     = "vmname" 
+  type = string
 }
 resource "aws_instance" "windows" {
   count                  = local.instance_count
