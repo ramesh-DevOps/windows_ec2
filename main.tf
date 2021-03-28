@@ -1,3 +1,6 @@
+provider "aws" {
+  region = "us-west-2"
+}
 variable "admin_password" {
   description = "password for windows instance"
   default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
