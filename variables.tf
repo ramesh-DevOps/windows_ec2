@@ -33,5 +33,5 @@ variable "num_suffix_format" {
 
 variable "admin_password" {
   description = "password for wnidows instance"
-  default     = "project@01"
+  default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
 }
