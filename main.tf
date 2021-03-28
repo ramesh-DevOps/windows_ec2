@@ -6,7 +6,7 @@ resource "aws_instance" "awsvm" {
   ami                    = local.ami
   key_name               = local.key_name
   instance_type          = local.type
-  vpc_security_group_ids = local.security_groups
+  vpc_security_group_ids = [aws_security_group.Instance_SG.id]
   subnet_id              = local.subnets
   
   connection{
@@ -22,6 +22,43 @@ resource "aws_instance" "awsvm" {
     }
   )
 }
+
+resource "aws_security_group" "Instance_SG" {
+  name        = "Instance-SG"
+  description = "Traffic to EC2"
+  vpc_id      = local.vpc.id
+
+  ingress {
+    description = "instances aws security group"
+    from_port   = 5986
+    to_port     = 5986
+    protocol    = "WinRM-HTTPS"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "instances aws security group"
+    from_port   = 5985
+    to_port     = 5985
+    protocol    = "WinRM-HTTP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    description = "instances aws security group"
+    from_port   = 3389
+    to_port     = 3389
+    protocol    = "RDP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags = {
+    Name = "Instance-SG"
+  }
+}
 locals {
   instancs_list = length(aws_instance.awsvm.*.id)
 
@@ -35,7 +72,6 @@ locals {
   product                    = var.product
   num_suffix_format          = var.num_suffix_format
   stack                      = var.stack
-  security_groups            = ["sg-64f87247"]
   subnets                    = "subnet-2708aa5f"
   idle_timeout               = 60
   enable_deletion_protection = false
