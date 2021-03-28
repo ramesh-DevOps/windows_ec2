@@ -2,11 +2,15 @@ variable "admin_password" {
   description = "password for windows instance"
   default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
 }
+variable "type" {
+  description = "type of instance"
+  default     = "vmname" 
+}
 resource "aws_instance" "windows" {
   count                  = local.instance_count
   ami                    = local.ami
   key_name               = local.key_name
-  instance_type          = local.type
+  instance_type          = var.type
   vpc_security_group_ids = [aws_security_group.Instance_SG.id]
   subnet_id              = local.subnets
   connection{
