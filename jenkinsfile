@@ -1,0 +1,44 @@
+pipeline {
+    agent any    
+    parameters{
+        string(name: 'AWS_EC2_TYPE', defaultValue: 't2.micro', description: 'The target environment', )
+    }
+    stages {
+        stage('git clone') {
+            steps {
+              git branch: 'main', url: "https://github.com/ramesh-DevOps/windows_ec2.git" 
+              sh "ls -ll"
+            }
+        }
+        
+        stage('terraform init') {
+            steps {
+              sh "terraform init" 
+            }
+        }
+        
+        stage('terraform plan') {
+            steps {
+                script {
+                   def  ec2type= params.AWS_EC2_TYPE
+                    println ec2type
+                    sh  "ls -ll"
+                    sh "pwd"
+                    sh "export TF_LOGS=trace"
+                    sh "terraform plan -var 'type=${params.AWS_EC2_TYPE}' -no-color" 
+                }
+            }
+        }
+        
+        stage('terraform apply') {
+            steps {
+                script{
+               def  type = params.AWS_EC2_TYPE
+                println type
+              sh "terraform apply -var 'type=${type}' -no-color --auto-approve"
+                }
+
+            }
+        }
+    }
+}  
