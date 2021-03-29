@@ -19,6 +19,7 @@ resource "aws_instance" "windows" {
   user = "Administrator"
   password = "${var.admin_password}"
   https = false
+  timeout  = "2m"
   insecure = true  
   }
   tags = {
