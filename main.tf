@@ -14,8 +14,12 @@ resource "aws_instance" "windows" {
   subnet_id              = local.subnets
   connection{
   type = "winrm"
+  port = 5986      
+  host = 172.31.26.213
   user = "Administrator"
   password = "${var.admin_password}"
+  https = true
+  insecure = true  
   }
   tags = {
      Name = "windows"
