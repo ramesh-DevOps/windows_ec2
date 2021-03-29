@@ -1,6 +1,6 @@
 variable "admin_password" {
   description = "password for windows instance"
-  default     = "jDbsj;9k8L.fNMA)Ofkkr6WSXoYRGAqa"
+  default     = "s*-)j3MGQ3Hp=U8o4GVKilvyG64TmCYA"
 }
 variable "type" {
   type = string
