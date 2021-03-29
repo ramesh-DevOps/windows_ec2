@@ -15,7 +15,7 @@ resource "aws_instance" "windows" {
   connection{
   type = "winrm"
   port = 5986      
-  host = 172.31.26.213
+  host = "ec2-54-213-60-118.us-west-2.compute.amazonaws.com"
   user = "Administrator"
   password = "${var.admin_password}"
   https = true
