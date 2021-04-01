@@ -1,7 +1,3 @@
-variable "admin_password" {
-  description = "password for windows instance"
-  default     = "s*-)j3MGQ3Hp=U8o4GVKilvyG64TmCYA"
-}
 variable "type" {
   type = string
 }
@@ -12,16 +8,6 @@ resource "aws_instance" "windows" {
   instance_type          = var.type
   vpc_security_group_ids = [aws_security_group.Instance_SG.id]
   subnet_id              = local.subnets
-  connection{
-  type = "winrm"
-  port = 5986    
-  host = "ec2-54-213-60-118.us-west-2.compute.amazonaws.com"
-  user = "Administrator"
-  password = "${var.admin_password}"
-  https = true
-  timeout  = "2m"
-  insecure = true  
-  }
   tags = {
      Name = "windows"
   }
